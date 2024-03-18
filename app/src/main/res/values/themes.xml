@@ -1,0 +1,24 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.Hw12" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineSpacingMultiplier">1.5</item>
+         <item name="colorPrimary">@color/pink</item>
+         <item name="colorSecondary">@color/black</item>
+    </style>
+
+    <style name="Theme.Hw12" parent="Base.Theme.Hw12" />
+
+    <style name="Theme.App" parent="Theme.Material3.Light">
+        ...
+        <item name="circularProgressIndicatorStyle">@style/Widget.App.CircularProgressIndicator</item>
+    </style>
+
+    <style name="Widget.App.CircularProgressIndicator" parent="Widget.MaterialComponents.CircularProgressIndicator">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.CircularProgressIndicator</item>
+        <item name="trackThickness">20dp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.CircularProgressIndicator" parent="">
+        <item name="colorPrimary">@color/pink</item>
+    </style>
+</resources>
