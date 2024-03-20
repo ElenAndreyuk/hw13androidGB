@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,24 +12,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/large_dimen"
-        android:hint="@string/search_textInput">
+        android:hint="@string/search_textInput"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
-            android:text="" />
+            android:onTextChanged="@{(text, before, on, after) -> viewModel.onTextChanged(editText, text.toString())}"
+             />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/buttonSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/large_dimen"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/search"/>
+<!--    <Button-->
+<!--        android:id="@+id/buttonSearch"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="@dimen/large_dimen"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:text="@string/search"/>-->
 
     <TextView
         android:id="@+id/text_view"
@@ -36,8 +39,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/small_dimen"
         android:layout_marginVertical="40dp"
-
-        android:textStyle="italic|bold"
+        android:text="@{viewModel.isSearching == false ? viewModel.searchResult.toString() : ``}"
         android:background="@color/gray"
         android:hint="@string/request_hint"/>
 
@@ -47,6 +49,15 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:indeterminate="true"
-        style="@style/Widget.App.CircularProgressIndicator"/>
+        style="@style/Widget.App.CircularProgressIndicator"
+        android:visibility="@{viewModel.isSearching == true ? View.VISIBLE : View.GONE}" />
 
 </LinearLayout>
+    <data>
+        <import type="android.view.View"/>
+        <import type="ru.elenandreyuk.hw12.ui.main.MainViewModel"/>
+        <variable
+            name="viewModel"
+            type="ru.elenandreyuk.hw12.ui.main.MainViewModel" />
+    </data>
+</layout>

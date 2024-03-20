@@ -3,4 +3,6 @@
     <string name="search">Search</string>
     <string name="request_hint">Здесь будет отображаться результат запроса</string>
     <string name="search_textInput">Введите запрос</string>
+
+    <string name="no_result">"По запросу $request ничего не найдено"</string>
 </resources>
